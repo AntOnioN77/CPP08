@@ -9,3 +9,10 @@ typename T::iterator easyfind(T &container, int n)
 		throw std::out_of_range("easyfind: out of range exception");
 	return it;
 }
+
+
+class foo
+{
+public:
+	static const int foo_value = 42;
+};
