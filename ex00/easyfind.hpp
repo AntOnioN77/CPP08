@@ -10,9 +10,11 @@ typename T::iterator easyfind(T &container, int n)
 	return it;
 }
 
-
-class foo
+template <typename T>
+typename T::const_iterator easyfind(const T &container, int n)
 {
-public:
-	static const int foo_value = 42;
-};
+    typename T::const_iterator it = std::find(container.begin(), container.end(), n);
+	if (it == container.end())
+		throw std::out_of_range("easyfind: out of range exception");
+	return it;
+}
