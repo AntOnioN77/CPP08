@@ -1,6 +1,7 @@
 #include "Span.hpp"
 #include <iostream>
 
+/*
 void put_tenthousand(Span &span)
 {
 
@@ -17,7 +18,7 @@ void put_tenthousand(Span &span)
 			}
 		}
 }
-/*
+
 int main(void)
 {
 	Span insufficentSpan(500);
@@ -77,6 +78,32 @@ int main(void)
 	{
 		std::cerr << e.what() << " catched" << std::endl;
 	}
+
+	std::cout << "--- Probando addNumbers con rango 0 - 1000 ---" << std::endl;
+	std::vector<int> vect_origen;
+	for (int i = 0; i < 1000; i++)
+	{
+		vect_origen.push_back(i);
+	}
+	std::vector<int> vect_extra;
+	vect_extra.push_back(1005);
+	vect_extra.push_back(1006);
+	Span rango(1000);
+	rango.addNumbers(vect_origen.begin(), vect_origen.end());
+	std::cout << "addNumbers() vector 0-999, esperado:999 tienes:" << rango.longestSpan() << std::endl;	
+
+	std::cout << "--- excediendo capacidad  de Span rango (debe fallar) ---" << std::endl;
+	try
+	{
+		rango.addNumbers(vect_extra.begin(), vect_extra.end());
+	}
+	catch (const Span::FullSpanException &e)
+	{
+		std::cerr << e.what() << " catched" << std::endl;
+	}
+	std::cout << "addNumbers() no deberia haber añadido nada, esperado:999 tienes:" << rango.longestSpan() << std::endl;	
+
+	return 0;
 }*/
 
 int main()

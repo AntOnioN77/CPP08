@@ -2,12 +2,12 @@
 #include <algorithm>
 #include <limits>
 
-Span::Span() : _size(0)
+Span::Span() : _sizeMax(0)
 {}
 
 Span::Span(const Span& other)
 {
-	_size = other._size;
+	_sizeMax = other._sizeMax;
 	for (std::vector<int>::const_iterator it = other._storage.begin();
 		it != other._storage.end(); it++)
 	{
@@ -18,7 +18,7 @@ Span::Span(const Span& other)
 Span& Span::operator=(const Span& other)
 {
 	_storage.erase(_storage.begin(), _storage.end());
-	_size = other._size;
+	_sizeMax = other._sizeMax;
 	for (std::vector<int>::const_iterator it = other._storage.begin();
 		it != other._storage.end(); it++)
 	{
@@ -30,12 +30,12 @@ Span& Span::operator=(const Span& other)
 Span::~Span()
 {}
 
-Span::Span(unsigned int num) : _size(num)
+Span::Span(unsigned int num) : _sizeMax(num)
 {}
 
 void Span::addNumber(int num)// Any attempt to add a new element if there are already N elements stored should throw an exception
 {
-	if (_storage.size() == _size)
+	if (_storage.size() == _sizeMax)
 	{
 		throw FullSpanException();
 	}
